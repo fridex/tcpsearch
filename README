@@ -1,0 +1,68 @@
+utf8
+
+                                   TCPSEARCH
+                                   =========
+
+Program tcpsearch je konzolový program určený na detekciu bežiacich služieb na
+TCP portoch počítačov, ktoré sú zadané IPv4, IPv6 alebo doménovými menami.
+
+                           ZOZNAM ODOVZDANÝCH SÚBOROV
+                           ==========================
+
+ * DOC/Makefile
+ * DOC/arg.dia
+ * DOC/arg.eps
+ * DOC/connect.dia
+ * DOC/connect.eps
+ * DOC/flow1.dia
+ * DOC/flow1.eps
+ * DOC/flow2.dia
+ * DOC/flow2.eps
+ * DOC/host.dia
+ * DOC/host.eps
+ * DOC/manual.tex
+ * Makefile
+ * README
+ * arg-inl.h
+ * arg.cpp
+ * arg.h
+ * connect.cpp
+ * connect.h
+ * host.cpp
+ * host.h
+ * manual.pdf
+ * tcpsearch.cpp
+ * tcpsearch.h
+
+                                   ROZŠÍRENIA
+                                   ==========
+
+V programe bol implementovaný prepínač -v ktorý umožňuje tzv. verbose výstup. V
+tomto prípade je užívateľ informovaný ak dojde k vypršaniu časového limitu pre
+spojenie prípadne vznikli iné problémy, ktoré zamedzili získanie informácií o
+bežiacej službe.
+
+Program ďalej podporuje komentáre vo vstupnom súbore. Komentáre začínaju na
+novom riadku, sú uvedené prvým znakom # a sú ukončené znakom nového riadku.
+Tieto riadky sú pri získavaní informácií zo vstupného súboru ignorované. Program
+ignoruje i prázdne riadky, prípadne text za zadanou adresou.
+
+                               PRÍKLADY SPUSTENIA
+                               ==================
+
+Výpis nápovedy:
+
+    tcpsearch -h
+
+Získanie informácií o službách na počítačoch určenými adresami v súbore in,
+porty v rozsahu 22 až 80 (vrátane 22 a 80):
+
+    tcpsearch in -p 22-80
+
+Získanie informácií o službách na počítačoch určenými adresami zadnými zo
+štandardného vstupu. Preskúmané su porty 22 a 80, v prípade neúspechu sa program
+snaží detekovať bližšie príčinu (parameter -v). Maximálny čas čakania na odpoveď
+sú dve sekundy.
+
+    tcpsearch -p 22,80 -v -t 2 -
+
